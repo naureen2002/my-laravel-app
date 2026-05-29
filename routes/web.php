@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\About;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('portfolio');
 });
 
 Auth::routes();
