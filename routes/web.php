@@ -12,7 +12,12 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 
 Route::get('/', function () {
-    return view('portfolio.index');
+    $about = About::first();
+    $projects = \App\Models\Project::all();
+    $skills = \App\Models\Skill::all();
+    $contacts = \App\Models\Contact::first();
+
+    return view('portfolio.index', compact('about', 'projects', 'skills', 'contacts'));
 });
 
 Auth::routes();
