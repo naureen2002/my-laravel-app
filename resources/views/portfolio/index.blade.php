@@ -26,17 +26,6 @@
     </div>
 </header>
 
-@php
-    $items = [
-        ['id' => 1, 'title' => 'Log Cabin', 'img' => 'cabin.png'],
-        ['id' => 2, 'title' => 'Tasty Cake', 'img' => 'cake.png'],
-        ['id' => 3, 'title' => 'Circus Tent', 'img' => 'circus.png'],
-        ['id' => 4, 'title' => 'Controller', 'img' => 'game.png'],
-        ['id' => 5, 'title' => 'Locked Safe', 'img' => 'safe.png'],
-        ['id' => 6, 'title' => 'Submarine', 'img' => 'submarine.png'],
-    ];
-@endphp
-
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
@@ -52,24 +41,33 @@
         </div>
 
         <div class="row justify-content-center">
-            @foreach($items as $item)
+            @forelse($projects as $project)
                 <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto"
-                         data-bs-toggle="modal"
-                         data-bs-target="#portfolioModal{{ $item['id'] }}">
+                    <div class="card h-100 shadow-sm">
+                        @if($project->image)
+                            <img
+                                class="card-img-top"
+                                src="{{ asset('assets/img/portfolio/' . $project->image) }}"
+                                alt="{{ $project->title }}"
+                            >
+                        @endif
 
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white">
-                                <i class="fas fa-plus fa-3x"></i>
-                            </div>
+                        <div class="card-body text-center">
+                            <h4 class="card-title">
+                                {{ $project->title }}
+                            </h4>
+
+                            <p class="card-text">
+                                {{ $project->description }}
+                            </p>
                         </div>
-
-                        <img class="img-fluid"
-                             src="{{ asset('assets/img/portfolio/' . $item['img']) }}"
-                             alt="{{ $item['title'] }}">
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-12 text-center">
+                    <p>No projects available.</p>
+                </div>
+            @endforelse
         </div>
     </div>
 </section>
@@ -144,58 +142,5 @@
         </div>
     </div>
 </section>
-
-@foreach($items as $item)
-    <div class="portfolio-modal modal fade"
-         id="portfolioModal{{ $item['id'] }}"
-         tabindex="-1"
-         aria-hidden="true">
-
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-
-                <div class="modal-header border-0">
-                    <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
-                </div>
-
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">
-                                    {{ $item['title'] }}
-                                </h2>
-
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-
-                                <img class="img-fluid rounded mb-5"
-                                     src="{{ asset('assets/img/portfolio/' . $item['img']) }}"
-                                     alt="{{ $item['title'] }}">
-
-                                <p class="mb-4">
-                                    This is a sample project description. Later, this section can be connected to the database and managed from the admin panel.
-                                </p>
-
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Close Window
-                                </button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-@endforeach
 
 @endsection

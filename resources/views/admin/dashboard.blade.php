@@ -1,35 +1,52 @@
-@extends('layouts.app')
+@extends('admin.layouts.admin')
 
-@section('content')
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            Portfolio Admin Panel
-        </div>
+@section('admin-content')
+<div class="card">
+    <div class="card-header">
+        Dashboard
+    </div>
 
-        <div class="card-body">
-            <h3>Welcome, {{ Auth::user()->name }}</h3>
-            <p>This is the admin panel for managing the portfolio website.</p>
+    <div class="card-body">
+        <h3>Welcome, {{ Auth::user()->name }}</h3>
 
-            <hr>
+        <p>This is your portfolio admin panel.</p>
 
-            <h5>About Me</h5>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5>About</h5>
+                        <p>Edit profile info</p>
+                    </div>
+                </div>
+            </div>
 
-            @if($about)
-                <p><strong>Name:</strong> {{ $about->name }}</p>
-                <p><strong>Title:</strong> {{ $about->title }}</p>
-                <p><strong>Description:</strong> {{ $about->description }}</p>
-            @else
-                <p>No about information found.</p>
-            @endif
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5>Projects</h5>
+                        <p>Manage projects</p>
+                    </div>
+                </div>
+            </div>
 
-            <hr>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5>Skills</h5>
+                        <p>Manage skills</p>
+                    </div>
+                </div>
+            </div>
 
-            <h5>Projects</h5>
-            <p>Manage portfolio projects.</p>
-
-            <h5>Contact Info</h5>
-            <p>Manage contact details.</p>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5>Contact</h5>
+                        <p>Edit contact info</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
