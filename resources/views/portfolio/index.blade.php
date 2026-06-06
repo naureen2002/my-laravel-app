@@ -48,47 +48,65 @@
         </div>
 
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm text-center p-4">
-                    <h4>SOC</h4>
-                    <p>24/7 monitoring, threat detection, and incident response support.</p>
-                </div>
-            </div>
+            @forelse($projects as $project)
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        @if($project->image)
+                            <img
+                                src="{{ asset('assets/img/portfolio/' . $project->image) }}"
+                                alt="{{ $project->title }}"
+                                class="img-fluid mb-3"
+                                style="max-height: 140px; object-fit: contain;"
+                            >
+                        @endif
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm text-center p-4">
-                    <h4>VAPT</h4>
-                    <p>Vulnerability assessment and penetration testing for digital systems.</p>
+                        <h4>{{ $project->title }}</h4>
+                        <p>{{ $project->description }}</p>
+                    </div>
                 </div>
-            </div>
+            @empty
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        <h4>SOC</h4>
+                        <p>24/7 monitoring, threat detection, and incident response support.</p>
+                    </div>
+                </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm text-center p-4">
-                    <h4>IT Audit</h4>
-                    <p>Security audit, compliance review, and ISO 27001 readiness support.</p>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        <h4>VAPT</h4>
+                        <p>Vulnerability assessment and penetration testing for digital systems.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm text-center p-4">
-                    <h4>Capacity Building</h4>
-                    <p>Cybersecurity training to improve employee awareness and readiness.</p>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        <h4>IT Audit</h4>
+                        <p>Security audit, compliance review, and ISO 27001 readiness support.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm text-center p-4">
-                    <h4>Defense Services</h4>
-                    <p>Threat intelligence, incident response, firewall management, backup, and risk assessment.</p>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        <h4>Capacity Building</h4>
+                        <p>Cybersecurity training to improve employee awareness and readiness.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4" id="vciso">
-                <div class="card h-100 shadow-sm text-center p-4">
-                    <h4>vCISO</h4>
-                    <p>Virtual CISO support for governance, compliance, strategy, and cyber resilience.</p>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        <h4>Defense Services</h4>
+                        <p>Threat intelligence, incident response, firewall management, backup, and risk assessment.</p>
+                    </div>
                 </div>
-            </div>
+
+                <div class="col-md-4" id="vciso">
+                    <div class="card h-100 shadow-sm text-center p-4">
+                        <h4>vCISO</h4>
+                        <p>Virtual CISO support for governance, compliance, strategy, and cyber resilience.</p>
+                    </div>
+                </div>
+            @endforelse
         </div>
 
     </div>
@@ -197,7 +215,7 @@
     <div class="container">
 
         <h2 class="page-section-heading text-center text-uppercase text-white">
-            Our Story
+            {{ $about->title ?? 'Our Story' }}
         </h2>
 
         <div class="divider-custom divider-light">
@@ -208,10 +226,16 @@
             <div class="divider-custom-line"></div>
         </div>
 
-        <p class="lead text-center">
-            Cyberlog helps organizations strengthen their cyber resilience through offensive security,
-            managed security operations, compliance readiness, and expert advisory services.
-        </p>
+        @if($about)
+            <p class="lead text-center">
+                {{ $about->description }}
+            </p>
+        @else
+            <p class="lead text-center">
+                Cyberlog helps organizations strengthen their cyber resilience through offensive security,
+                managed security operations, compliance readiness, and expert advisory services.
+            </p>
+        @endif
 
     </div>
 </section>

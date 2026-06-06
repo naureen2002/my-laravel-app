@@ -7,59 +7,54 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $contacts = Contact::latest()->get();
+
+        return view('admin.contact.index', compact('contacts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.contact.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:255',
+        ]);
+
+        Contact::create($request->only('email', 'phone'));
+
+        return redirect()->route('admin.contacts.index')
+            ->with('success', 'Contact created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Contact $contact)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Contact $contact)
     {
-        //
+        return view('admin.contact.edit', compact('contact'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $request->validate([
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:255',
+        ]);
+
+        $contact->update($request->only('email', 'phone'));
+
+        return redirect()->route('admin.contacts.index')
+            ->with('success', 'Contact updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return redirect()->route('admin.contacts.index')
+            ->with('success', 'Contact deleted successfully.');
     }
 }
