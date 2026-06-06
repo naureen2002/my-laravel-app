@@ -11,7 +11,7 @@
                 </h4>
 
                 <p class="lead mb-0">
-                    Canada
+                    Dhaka, Bangladesh
                 </p>
 
             </div>
@@ -39,11 +39,11 @@
             <div class="col-lg-4">
 
                 <h4 class="text-uppercase mb-4">
-                    About Site
+                    About Cyberlog
                 </h4>
 
                 <p class="lead mb-0">
-                    Laravel Portfolio with Admin Panel
+                    Cyberlog provides SOC, VAPT, IT Audit, vCISO, and cybersecurity consulting services.
                 </p>
 
             </div>
