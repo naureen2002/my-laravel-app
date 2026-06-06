@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php artisan *)",
+      "Bash(curl -s -D - -o /tmp/s.html \"http://127.0.0.1:8741/services\")",
+      "Bash(curl -s -D - -o /tmp/a.html \"http://127.0.0.1:8741/about\")",
+      "Read(//tmp/**)",
+      "Bash(taskkill //F //IM php.exe)"
+    ]
+  }
+}
