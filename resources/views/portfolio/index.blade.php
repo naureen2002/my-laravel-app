@@ -48,23 +48,6 @@
         </div>
 
         <div class="row g-4">
-            @forelse($projects as $project)
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm text-center p-4">
-                        @if($project->image)
-                            <img
-                                src="{{ asset('assets/img/portfolio/' . $project->image) }}"
-                                alt="{{ $project->title }}"
-                                class="img-fluid mb-3"
-                                style="max-height: 140px; object-fit: contain;"
-                            >
-                        @endif
-
-                        <h4>{{ $project->title }}</h4>
-                        <p>{{ $project->description }}</p>
-                    </div>
-                </div>
-            @empty
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm text-center p-4">
                         <h4>SOC</h4>
@@ -106,7 +89,6 @@
                         <p>Virtual CISO support for governance, compliance, strategy, and cyber resilience.</p>
                     </div>
                 </div>
-            @endforelse
         </div>
 
     </div>
@@ -215,7 +197,7 @@
     <div class="container">
 
         <h2 class="page-section-heading text-center text-uppercase text-white">
-            {{ $about->title ?? 'Our Story' }}
+            Our Story
         </h2>
 
         <div class="divider-custom divider-light">
@@ -226,16 +208,10 @@
             <div class="divider-custom-line"></div>
         </div>
 
-        @if($about)
-            <p class="lead text-center">
-                {{ $about->description }}
-            </p>
-        @else
-            <p class="lead text-center">
-                Cyberlog helps organizations strengthen their cyber resilience through offensive security,
-                managed security operations, compliance readiness, and expert advisory services.
-            </p>
-        @endif
+        <p class="lead text-center">
+            Cyberlog helps organizations strengthen their cyber resilience through offensive security,
+            managed security operations, compliance readiness, and expert advisory services.
+        </p>
 
     </div>
 </section>

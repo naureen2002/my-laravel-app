@@ -70,26 +70,6 @@
 
                 </li>
 
-                @guest
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a
-                            class="nav-link py-3 px-0 px-lg-3 rounded text-warning"
-                            href="{{ route('login') }}"
-                        >
-                            Admin Login
-                        </a>
-                    </li>
-                @else
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a
-                            class="nav-link py-3 px-0 px-lg-3 rounded text-warning"
-                            href="{{ route('admin.dashboard') }}"
-                        >
-                            Dashboard
-                        </a>
-                    </li>
-                @endguest
-
             </ul>
 
         </div>
