@@ -26,7 +26,7 @@
 
         <p class="section-eyebrow text-center mb-2">Trusted by 14+ organizations</p>
         <h2 class="page-section-heading text-center text-uppercase text-white mb-4">
-            Our Clients
+            Our <span class="cl-title-accent">Clients</span>
         </h2>
 
         {{-- Logo marquee (grayscale → color on hover, links to website, pauses on hover) --}}

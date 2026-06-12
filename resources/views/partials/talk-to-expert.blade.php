@@ -6,7 +6,7 @@
                 <h3 class="fw-bold mb-1">{{ $title ?? 'Still evaluating your security options?' }}</h3>
                 <p class="mb-0 text-white-50">{{ $text ?? "We'll walk you through the pros, cons, and pricing." }}</p>
             </div>
-            <a class="btn btn-primary btn-xl text-white fw-bold" href="{{ route('contact') }}">
+            <a class="btn btn-alert btn-xl text-white fw-bold" href="{{ route('contact') }}">
                 Talk to an Expert
             </a>
         </div>

@@ -33,7 +33,7 @@
                     @endforeach
 
                     <div class="cl-radial-hub">
-                        <div class="d-inline-grid" style="place-items:center;width:96px;height:96px;border-radius:50%;background:rgba(26,188,156,.15);border:2px solid var(--cl-teal);">
+                        <div class="d-inline-grid" style="place-items:center;width:96px;height:96px;border-radius:50%;background:var(--blue-dim);border:2px solid var(--blue-bright);">
                             <i class="fas fa-user-shield text-teal" style="font-size:2.4rem;"></i>
                         </div>
                         <div class="fw-bold mt-2">vCISO Core</div>

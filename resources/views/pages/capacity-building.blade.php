@@ -56,6 +56,37 @@
 </section>
 
 {{-- Section 5 — Impact statistics --}}
+<section class="page-section bg-light" id="courses">
+    <div class="container">
+        <p class="section-eyebrow text-center mb-2">Professional Courses</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Learn Cyber Security From <span class="cl-title-accent">Industry Experts</span></h2>
+        <div class="row g-4 justify-content-center">
+            @foreach ([
+                ['fa-user-secret', 'Certified Ethical Hacker (CEH)', 'Hands-on ethical hacking foundations for learners preparing to assess and secure real systems.', '15,000 BDT', '10,000 BDT', '33% off'],
+                ['fa-headset', 'Certified SOC Analyst (CSA)', 'Practical SOC analyst training for monitoring, triage, alert handling, and security operations readiness.', '10,000 BDT', '7,000 BDT', '30% off'],
+            ] as $course)
+                <div class="col-md-6 col-lg-5">
+                    <div class="cl-price-card h-100 d-flex flex-column text-start">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="cl-solution-icon mb-0"><i class="fas {{ $course[0] }}"></i></div>
+                            <div>
+                                <span class="badge bg-primary mb-2">{{ $course[5] }}</span>
+                                <h4 class="fw-bold mb-0">{{ $course[1] }}</h4>
+                            </div>
+                        </div>
+                        <p class="text-muted">{{ $course[2] }}</p>
+                        <div class="mt-auto">
+                            <div class="text-muted small text-decoration-line-through">{{ $course[3] }}</div>
+                            <div class="cl-stat-num">{{ $course[4] }}</div>
+                            <a class="btn btn-primary text-white fw-bold mt-3" href="{{ route('contact') }}">Ask About This Course</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 <section class="page-section bg-navy-soft text-white" id="impact">
     <div class="container">
         <div class="row align-items-center g-5">

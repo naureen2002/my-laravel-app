@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'My Portfolio')</title>
+    <meta name="description" content="@yield('meta_description', 'Cyberlog — offensive security, managed SOC, compliance, threat intelligence and vCISO for enterprises, government, financial institutions and critical infrastructure.')">
+    <title>@yield('title', 'Cyberlog — Cyber Defense')</title>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -12,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    {{-- Bootstrap (Freelancer base) + Cyberlog "Threat Console" design system --}}
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/cyberlog.css') }}" rel="stylesheet">
 
@@ -20,9 +22,11 @@
 
 <body id="page-top">
 
-    @include('partials.navbar')
+    @include('frontend.public.partials.nav')
 
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
 
     @include('frontend.public.partials.footer')
 

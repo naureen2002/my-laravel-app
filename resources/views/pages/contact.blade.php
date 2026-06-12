@@ -17,12 +17,13 @@
         <div class="row g-5">
             <div class="col-lg-5">
                 <p class="section-eyebrow mb-2">Reach Us</p>
-                <h2 class="fw-bold text-secondary mb-4">Talk to a security expert</h2>
+                <h2 class="fw-bold text-secondary mb-4">Talk to a <span class="cl-title-accent">security expert</span></h2>
                 <p class="text-muted mb-4">Tell us a little about your environment and goals — we'll get back to you with the right team.</p>
                 <ul class="list-unstyled">
-                    <li class="mb-3"><i class="fas fa-location-dot text-teal me-2"></i>Dhaka, Bangladesh</li>
+                    <li class="mb-3"><i class="fas fa-location-dot text-teal me-2"></i>1/6, Block C (New), Mirpur-01, Dhaka 1216</li>
                     <li class="mb-3"><i class="fas fa-envelope text-teal me-2"></i>hello@cyberlog.io</li>
                     <li class="mb-3"><i class="fas fa-phone text-teal me-2"></i>+880 1XXX-XXXXXX</li>
+                    <li class="mb-3"><i class="fas fa-file-signature text-teal me-2"></i>Trade License: TRAD/DNCC/092990/202</li>
                 </ul>
                 <div class="d-flex gap-2">
                     <a class="btn btn-outline-secondary btn-social" href="#"><i class="fab fa-fw fa-facebook-f"></i></a>
