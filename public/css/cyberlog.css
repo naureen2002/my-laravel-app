@@ -243,8 +243,10 @@ section[id], header[id] { scroll-margin-top: 86px; }
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
     transition: background .3s var(--ease), padding .3s var(--ease);
+    z-index: 1040; /* above page sections (z-index:2) so the Services dropdown is clickable */
 }
 #mainNav.navbar-shrink { background: rgba(7, 17, 31, 0.96) !important; }
+#mainNav .dropdown-menu { z-index: 1050; margin-top: .35rem; box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.55); }
 #mainNav .navbar-brand {
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
@@ -552,23 +554,41 @@ section[id], header[id] { scroll-margin-top: 86px; }
 
 .cl-client-logo {
     display: inline-flex; align-items: center; justify-content: center;
-    min-width: 150px; height: 56px; padding: .5rem 1rem;
+    min-width: 150px; height: 74px; padding: .75rem 1rem;
     font-family: 'IBM Plex Mono', monospace;
     color: var(--muted); font-weight: 500; font-size: .85rem;
     text-decoration: none; white-space: nowrap;
-    filter: grayscale(1); opacity: .65;
-    transition: all .25s var(--ease);
+    opacity: 1;
+    transition: opacity .25s var(--ease), transform .25s var(--ease);
 }
-.cl-client-logo:hover { color: var(--blue-bright); filter: grayscale(0); opacity: 1; transform: translateY(-3px); }
+.cl-client-logo img {
+    display: block;
+    max-width: 136px;
+    max-height: 54px;
+    object-fit: contain;
+    filter: none;
+    transition: filter .25s var(--ease), opacity .25s var(--ease), transform .25s var(--ease);
+}
+.cl-client-logo:hover { color: var(--blue-bright); opacity: 1; transform: translateY(-3px); }
+.cl-client-logo:hover img { transform: scale(1.16); }
 
 .cl-client-card {
-    display: flex; align-items: center; gap: .75rem;
-    padding: .85rem 1rem;
+    display: flex; align-items: center; justify-content: center; gap: .75rem;
+    padding: 1rem;
     border: 1px solid var(--line);
-    border-radius: var(--r);
+    border-radius: 8px;
     background: var(--surface);
-    height: 100%; text-decoration: none; color: var(--text);
+    min-height: 118px; height: 100%; text-decoration: none; color: var(--text);
     transition: all .2s var(--ease);
+}
+.cl-client-card img {
+    display: block;
+    max-width: 100%;
+    max-height: 68px;
+    object-fit: contain;
+    filter: none;
+    opacity: 1;
+    transition: filter .25s var(--ease), opacity .25s var(--ease), transform .25s var(--ease);
 }
 .cl-client-card:hover {
     border-color: var(--blue-bright);
@@ -576,6 +596,7 @@ section[id], header[id] { scroll-margin-top: 86px; }
     transform: translateY(-3px);
     color: var(--white);
 }
+.cl-client-card:hover img { opacity: 1; transform: scale(1.16); }
 .cl-client-card .cl-client-no {
     flex: 0 0 auto; width: 32px; height: 32px;
     display: grid; place-items: center; border-radius: var(--r);

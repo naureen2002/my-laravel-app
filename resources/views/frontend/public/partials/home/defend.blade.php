@@ -7,6 +7,29 @@
 
     <canvas class="cl-dao-bg" data-net aria-hidden="true"></canvas>
 
+    <div class="cl-dao-floats" aria-hidden="true">
+        <div class="cl-dao-bubble cl-dao-bubble-1">
+            <div><i class="fas fa-user"></i><strong>Mark Smith</strong></div>
+            <p>What policies do you have regarding AI?</p>
+        </div>
+        <div class="cl-dao-bubble cl-dao-bubble-2">
+            <div><i class="fas fa-user"></i><strong>Laura Alman</strong></div>
+            <p>Have you found any risks on this supplier?</p>
+        </div>
+        <div class="cl-dao-bubble cl-dao-bubble-3">
+            <div><i class="fas fa-user"></i><strong>Amin Rahman</strong></div>
+            <p>Can anyone confirm this phishing indicator?</p>
+        </div>
+        <div class="cl-dao-bubble cl-dao-bubble-4">
+            <div><i class="fas fa-user"></i><strong>Sarah Khan</strong></div>
+            <p>Is this vendor exposed to the same CVE?</p>
+        </div>
+        <div class="cl-dao-bubble cl-dao-bubble-5">
+            <div><i class="fas fa-user"></i><strong>David Lee</strong></div>
+            <p>Sharing fresh IOC matches from our SOC.</p>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row align-items-center g-5">
 
@@ -57,6 +80,60 @@
     .cl-dao-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
     .cl-dao-section .container { position: relative; z-index: 2; }
 
+    .cl-dao-floats {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+    }
+    .cl-dao-bubble {
+        position: absolute;
+        width: min(330px, 24vw);
+        padding: .95rem 1rem;
+        border: 1px solid rgba(255, 191, 27, 0.28);
+        border-radius: 8px;
+        background: rgba(7, 17, 31, 0.72);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.38), inset 0 0 28px rgba(109, 156, 255, 0.05);
+        animation: clDaoBubbleFloat 6.8s ease-in-out infinite;
+    }
+    .cl-dao-bubble div {
+        display: flex;
+        align-items: center;
+        gap: .55rem;
+        padding-bottom: .65rem;
+        margin-bottom: .65rem;
+        border-bottom: 1px solid var(--line);
+        color: var(--warm-soft);
+        font-family: 'Chakra Petch', sans-serif;
+    }
+    .cl-dao-bubble i { color: var(--warm-soft); }
+    .cl-dao-bubble p {
+        margin: 0;
+        color: var(--text);
+        font-size: .9rem;
+        line-height: 1.42;
+        font-weight: 600;
+    }
+    .cl-dao-bubble-1 { top: 8%; right: 9%; }
+    .cl-dao-bubble-2 { bottom: 9%; left: 40%; animation-delay: 1.1s; }
+    .cl-dao-bubble-3 { top: 18%; left: 6%; animation-delay: 2.1s; }
+    .cl-dao-bubble-4 { bottom: 17%; right: 4%; animation-delay: 3s; }
+    .cl-dao-bubble-5 { top: 54%; left: 8%; animation-delay: 4.1s; }
+    @keyframes clDaoBubbleFloat {
+        0%, 100% { transform: translateY(0); opacity: .82; }
+        50% { transform: translateY(-12px); opacity: 1; }
+    }
+    @media (max-width: 1199.98px) {
+        .cl-dao-bubble-3,
+        .cl-dao-bubble-5 { display: none; }
+        .cl-dao-bubble { width: min(310px, 28vw); }
+    }
+    @media (max-width: 991.98px) {
+        .cl-dao-floats { display: none; }
+    }
+
     .cl-dao-card {
         position: relative; border-radius: 16px; padding: 1.85rem;
         background: linear-gradient(160deg, var(--surface), var(--bg-alt)) padding-box,
@@ -97,6 +174,7 @@
     .cl-dao-line.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
         .cl-dao-line { opacity: 1 !important; transform: none !important; }
+        .cl-dao-bubble { animation: none !important; }
     }
 </style>
 @endpush

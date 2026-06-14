@@ -20,7 +20,7 @@
 
 <body id="page-top">
 
-    @include('partials.navbar')
+    @include('frontend.public.partials.nav')
 
     @yield('content')
 

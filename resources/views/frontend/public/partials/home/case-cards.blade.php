@@ -84,11 +84,11 @@
     .cl-cases {
         display: flex; gap: 1.25rem;
         overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-        padding: 1.5rem .25rem 2rem;
-        scrollbar-width: thin; scrollbar-color: var(--blue) transparent;
+        padding: 1.5rem .25rem 1.5rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
-    .cl-cases::-webkit-scrollbar { height: 6px; }
-    .cl-cases::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 10px; }
+    .cl-cases::-webkit-scrollbar { display: none; }
 
     .cl-case {
         scroll-snap-align: start;
@@ -192,7 +192,7 @@
     }
     function startAuto() {
         if (reduce || autoTimer || cards.length < 2 || row.scrollWidth <= row.clientWidth + 8) return;
-        autoTimer = window.setInterval(function () { step(1); }, 3000);
+        autoTimer = window.setInterval(function () { step(1); }, 2200);
     }
     function stopAuto() {
         if (!autoTimer) return;

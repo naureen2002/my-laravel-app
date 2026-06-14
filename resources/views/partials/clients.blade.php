@@ -1,57 +1,37 @@
-{{-- Reusable "Trusted Clients" section: white logos that color on hover & link out.
-     Used on the Home page and as "Section 2 — Client" on every service page. --}}
+{{-- Reusable "Trusted Clients" section using official logos from cyberlog.bd's
+     "We're Working With" carousel. --}}
 @php
     $clients = [
-        ['name' => 'Aspire to Innovate (a2i)', 'url' => 'https://a2i.gov.bd'],
-        ['name' => 'Aamar Taka', 'url' => '#'],
-        ['name' => 'Adcomm Limited', 'url' => '#'],
-        ['name' => 'Bangladesh Finance', 'url' => '#'],
-        ['name' => 'BIDA', 'url' => 'https://bida.gov.bd'],
-        ['name' => 'Bangladesh Petroleum Institute (BPI)', 'url' => '#'],
-        ['name' => 'Bangladesh Police', 'url' => 'https://police.gov.bd'],
-        ['name' => 'BUBT', 'url' => 'https://bubt.edu.bd'],
-        ['name' => 'Dhaka Stock Exchange (DSE)', 'url' => 'https://dsebd.org'],
-        ['name' => 'LegalX', 'url' => '#'],
-        ['name' => 'NAPD', 'url' => 'https://napd.gov.bd'],
-        ['name' => 'Nazimgarh Resort', 'url' => '#'],
-        ['name' => 'ReachSavvy', 'url' => '#'],
-        ['name' => 'Vibe Gaming', 'url' => '#'],
+        ['name' => 'National Academy for Planning and Development', 'url' => 'https://napd.gov.bd/', 'logo' => 'napd.png'],
+        ['name' => 'Bangladesh Police', 'url' => 'https://www.police.gov.bd/', 'logo' => 'police.png'],
+        ['name' => 'Bangladesh University of Business and Technology', 'url' => 'https://www.bubt.edu.bd/', 'logo' => 'bubt.png'],
+        ['name' => 'Aspire to Innovate (a2i)', 'url' => 'https://a2i.gov.bd/', 'logo' => 'a2i.png'],
+        ['name' => 'United IT', 'url' => 'http://www.uniteditbd.com/', 'logo' => 'unitedit.png'],
+        ['name' => 'United Nations Development Programme', 'url' => 'https://www.undp.org/', 'logo' => 'undp.png'],
     ];
-    // allow a short label override for the strip
-    $stripClients = $clients;
 @endphp
 
 <section class="page-section bg-navy text-white" id="clients">
     <div class="container">
 
-        <p class="section-eyebrow text-center mb-2">Trusted by 14+ organizations</p>
+        <p class="section-eyebrow text-center mb-2">We're Working With</p>
         <h2 class="page-section-heading text-center text-uppercase text-white mb-4">
             Our <span class="cl-title-accent">Clients</span>
         </h2>
 
-        {{-- Logo marquee (grayscale → color on hover, links to website, pauses on hover) --}}
-        <div class="cl-marquee mb-5">
+        <div class="cl-marquee">
             <div class="cl-marquee-track">
-                @foreach ($stripClients as $c)
-                    <a class="cl-client-logo" href="{{ $c['url'] }}" target="_blank" rel="noopener">{{ $c['name'] }}</a>
+                @foreach ($clients as $c)
+                    <a class="cl-client-logo" href="{{ $c['url'] }}" target="_blank" rel="noopener" aria-label="{{ $c['name'] }}">
+                        <img src="{{ asset('assets/img/clients/working-with/' . $c['logo']) }}" alt="{{ $c['name'] }}">
+                    </a>
                 @endforeach
-                {{-- duplicate set for seamless loop --}}
-                @foreach ($stripClients as $c)
-                    <a class="cl-client-logo" href="{{ $c['url'] }}" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">{{ $c['name'] }}</a>
+                @foreach ($clients as $c)
+                    <a class="cl-client-logo" href="{{ $c['url'] }}" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                        <img src="{{ asset('assets/img/clients/working-with/' . $c['logo']) }}" alt="">
+                    </a>
                 @endforeach
             </div>
-        </div>
-
-        {{-- Full roster (serial list) --}}
-        <div class="row g-3">
-            @foreach ($clients as $i => $c)
-                <div class="col-md-6 col-lg-4">
-                    <a class="cl-client-card" href="{{ $c['url'] }}" target="_blank" rel="noopener">
-                        <span class="cl-client-no">{{ $i + 1 }}</span>
-                        <span class="fw-semibold">{{ $c['name'] }}</span>
-                    </a>
-                </div>
-            @endforeach
         </div>
 
     </div>

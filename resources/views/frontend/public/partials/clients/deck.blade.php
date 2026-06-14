@@ -1,31 +1,68 @@
-{{-- Clients › detailed case cards as a stacked deck (ref: viserx.com)
-     Content on the left, a "website preview" browser mock on the right. Cards stack
-     with the back ones peeking (showing their category); click a back card or use the
-     controls to bring it to the front. Aggregates the detailed client stories shown on
-     the home page and service pages. --}}
+{{-- Clients > Success Stories deck.
+     Uses official logos from cyberlog.bd's "We're Working With" carousel. --}}
 @php
     $u = fn ($pub, $legacy) => Route::has($pub) ? route($pub) : (Route::has($legacy) ? route($legacy) : '#');
 
     $cases = [
         [
-            'cat' => 'Government Organization', 'name' => 'Dhaka Stock Exchange (DSE)', 'logo' => 'dse', 'service' => 'soc', 'accent' => 'var(--blue-bright)',
-            'desc' => "Cyberlog delivered SOC support for Dhaka Stock Exchange, Bangladesh's most critical capital market infrastructure and one of the country's highest-value financial technology environments.",
-            'stats' => [['24/7', 'SOC Monitoring'], ['99.99%', 'uptime for Capital Market Cyber Defense']],
+            'cat' => 'Government Organization',
+            'name' => 'National Academy for Planning and Development',
+            'logo' => 'napd.png',
+            'url' => 'https://napd.gov.bd/',
+            'service' => 'capacity-building',
+            'accent' => 'var(--blue-bright)',
+            'desc' => 'Cyberlog supports public-sector cybersecurity readiness with practical assessment, training, and resilience services for organizations like NAPD.',
+            'stats' => [['12', 'Security Areas Reviewed'], ['200+', 'Learners Enabled']],
         ],
         [
-            'cat' => 'Financial Institute', 'name' => 'Bangladesh Finance', 'logo' => 'bangladesh-finance', 'service' => 'vapt', 'accent' => 'var(--red-soft)',
-            'desc' => 'Cyberlog conducted VAPT for Bangladesh Finance to identify, validate, and prioritize exploitable security risks across its digital environment.',
-            'stats' => [['360°', 'Security Risk Review'], ['10+', 'High-Priority Risks Validated']],
+            'cat' => 'Law Enforcement',
+            'name' => 'Bangladesh Police',
+            'logo' => 'police.png',
+            'url' => 'https://www.police.gov.bd/',
+            'service' => 'defense-services',
+            'accent' => 'var(--red-soft)',
+            'desc' => 'Cyberlog helps mission-critical teams strengthen response readiness, digital investigation awareness, and operational cyber defense practices.',
+            'stats' => [['24/7', 'Defense Readiness'], ['360', 'Risk Visibility']],
         ],
         [
-            'cat' => 'Government Organization', 'name' => 'Bangladesh Investment Development Authority (BIDA)', 'logo' => 'bida', 'service' => 'capacity-building', 'accent' => 'var(--blue-bright)',
-            'desc' => 'Cyberlog conducted cybersecurity capacity building for the IT team of BIDA and supported the organization with a cybersecurity assessment to improve technical readiness, risk visibility, and institutional cyber resilience.',
-            'stats' => [['250%+', "Increase in Employees' Cybersecurity Skills"], ['12', 'Security Areas Reviewed']],
+            'cat' => 'Education',
+            'name' => 'Bangladesh University of Business and Technology',
+            'logo' => 'bubt.png',
+            'url' => 'https://www.bubt.edu.bd/',
+            'service' => 'capacity-building',
+            'accent' => 'var(--blue-bright)',
+            'desc' => 'Cyberlog supports education-sector cybersecurity maturity through awareness, technical readiness, and practical cyber defense programs.',
+            'stats' => [['250%+', 'Skill Growth Target'], ['85%', 'Phishing Risk Reduction']],
         ],
         [
-            'cat' => 'Advertisement Industry', 'name' => 'Adcomm Limited', 'logo' => 'adcomm', 'service' => 'it-audit', 'accent' => 'var(--red-soft)',
-            'desc' => 'Cyberlog supported Adcomm Limited with ISO 27001 implementation and employee cybersecurity capacity building to strengthen compliance readiness and workforce security awareness.',
-            'stats' => [['93', 'ISO Controls Mapped'], ['200+', 'Employees Trained']],
+            'cat' => 'Digital Government',
+            'name' => 'Aspire to Innovate (a2i)',
+            'logo' => 'a2i.png',
+            'url' => 'https://a2i.gov.bd/',
+            'service' => 'vapt',
+            'accent' => 'var(--red-soft)',
+            'desc' => 'Cyberlog supports digital-service assurance with VAPT, security reviews, and practical remediation guidance for public digital ecosystems.',
+            'stats' => [['360', 'Security Review'], ['10+', 'Priority Risks Validated']],
+        ],
+        [
+            'cat' => 'Technology Partner',
+            'name' => 'United IT',
+            'logo' => 'unitedit.png',
+            'url' => 'http://www.uniteditbd.com/',
+            'service' => 'soc',
+            'accent' => 'var(--blue-bright)',
+            'desc' => 'Cyberlog helps technology teams improve managed security, monitoring readiness, and network protection across modern digital operations.',
+            'stats' => [['24/7', 'Monitoring Ready'], ['56', 'Assets Reviewed']],
+        ],
+        [
+            'cat' => 'Development Organization',
+            'name' => 'United Nations Development Programme',
+            'logo' => 'undp.png',
+            'url' => 'https://www.undp.org/',
+            'service' => 'it-audit',
+            'accent' => 'var(--red-soft)',
+            'desc' => 'Cyberlog supports governance, compliance, and security assurance needs for organizations operating across complex stakeholder environments.',
+            'stats' => [['93', 'Controls Mapped'], ['100%', 'Action Plan Focus']],
         ],
     ];
 @endphp
@@ -33,7 +70,6 @@
 <section class="page-section" id="client-stories">
     <div class="container">
         <p class="section-eyebrow text-center mb-2">Success Stories</p>
-        {{-- TODO: copy — section heading / tagline (none provided in brief) --}}
 
         <div class="cl-deck-wrap">
             <div class="cl-deck" id="clDeck">
@@ -57,11 +93,12 @@
                                 </a>
                             </div>
                             <div class="cl-deck-preview">
-                                {{-- TODO: swap for a real website screenshot per client --}}
                                 <div class="cl-browser">
                                     <div class="cl-browser-bar"><span></span><span></span><span></span></div>
                                     <div class="cl-browser-body">
-                                        <img src="{{ asset('assets/img/clients/' . $case['logo'] . '.svg') }}" alt="{{ $case['name'] }} website preview">
+                                        <a class="cl-deck-logo-link" href="{{ $case['url'] }}" target="_blank" rel="noopener" aria-label="{{ $case['name'] }} website">
+                                            <img src="{{ asset('assets/img/clients/working-with/' . $case['logo']) }}" alt="{{ $case['name'] }} logo">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +110,7 @@
             <div class="cl-deck-nav">
                 <button class="cl-deck-arrow cl-deck-prev" type="button" aria-label="Previous client"><i class="fas fa-chevron-left"></i></button>
                 <div class="cl-deck-dots">
-                    @foreach ($cases as $i => $case)
+                    @foreach ($cases as $case)
                         <button class="cl-deck-dot" type="button" aria-label="Show {{ $case['name'] }}"></button>
                     @endforeach
                 </div>
@@ -86,10 +123,10 @@
 @push('styles')
 <style>
     .cl-deck-wrap { max-width: 940px; margin: 2rem auto 0; }
-    .cl-deck { position: relative; min-height: 470px; padding-top: 112px; }
+    .cl-deck { position: relative; min-height: 500px; padding-top: 130px; }
 
     .cl-deck-card {
-        position: absolute; left: 0; right: 0; top: 112px;
+        position: absolute; left: 0; right: 0; top: 130px;
         background: linear-gradient(160deg, var(--surface), var(--bg-alt));
         border: 1px solid var(--line); border-radius: 16px;
         padding: 1.85rem;
@@ -100,11 +137,12 @@
         cursor: pointer;
     }
     .cl-deck-card.is-front { cursor: default; }
-    /* initial stack (works without JS) */
-    .cl-deck-card:nth-child(1) { transform: translateY(0) scale(1);        z-index: 40; opacity: 1; }
-    .cl-deck-card:nth-child(2) { transform: translateY(-34px) scale(.965); z-index: 30; opacity: .8; }
-    .cl-deck-card:nth-child(3) { transform: translateY(-68px) scale(.93);  z-index: 20; opacity: .6; }
-    .cl-deck-card:nth-child(4) { transform: translateY(-102px) scale(.895);z-index: 10; opacity: .45; }
+    .cl-deck-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 60; opacity: 1; }
+    .cl-deck-card:nth-child(2) { transform: translateY(-34px) scale(.965); z-index: 50; opacity: .8; }
+    .cl-deck-card:nth-child(3) { transform: translateY(-68px) scale(.93); z-index: 40; opacity: .6; }
+    .cl-deck-card:nth-child(4) { transform: translateY(-102px) scale(.895); z-index: 30; opacity: .45; }
+    .cl-deck-card:nth-child(5) { transform: translateY(-128px) scale(.86); z-index: 20; opacity: .36; }
+    .cl-deck-card:nth-child(6) { transform: translateY(-150px) scale(.835); z-index: 10; opacity: .28; }
 
     .cl-deck-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; align-items: center; }
     .cl-deck-cat { font-family: 'IBM Plex Mono', monospace; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cat, var(--blue-bright)); }
@@ -127,7 +165,6 @@
     .cl-deck-btn i { transition: transform .2s var(--ease); }
     .cl-deck-btn:hover i { transform: translateX(4px); }
 
-    /* website preview browser mock */
     .cl-browser { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--bg-alt); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.42); }
     .cl-browser-bar { display: flex; align-items: center; gap: 6px; padding: .55rem .7rem; background: rgba(255, 255, 255, 0.04); border-bottom: 1px solid var(--line); }
     .cl-browser-bar span { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); opacity: .5; }
@@ -135,9 +172,28 @@
         aspect-ratio: 16 / 10; display: grid; place-items: center; padding: 1.5rem;
         background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.16), transparent 60%), linear-gradient(160deg, var(--surface), var(--bg-alt));
     }
-    .cl-browser-body img { max-width: 72%; height: auto; }
+    .cl-deck-logo-link {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        min-height: 190px;
+    }
+    .cl-browser-body img {
+        max-width: 76%;
+        max-height: 120px;
+        height: auto;
+        object-fit: contain;
+        filter: none;
+        opacity: 1;
+        transition: filter .25s var(--ease), opacity .25s var(--ease), transform .25s var(--ease);
+    }
+    .cl-deck-card.is-front .cl-browser-body img,
+    .cl-deck-card:hover .cl-browser-body img {
+        opacity: 1;
+        transform: scale(1.12);
+    }
 
-    /* controls */
     .cl-deck-nav { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-top: 2.25rem; }
     .cl-deck-dots { display: flex; gap: .5rem; }
     .cl-deck-dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: var(--line); cursor: pointer; transition: all .25s var(--ease); }
@@ -147,7 +203,7 @@
 
     @media (max-width: 767.98px) {
         .cl-deck { min-height: 0; padding-top: 0; }
-        .cl-deck-card { position: relative; transform: none !important; opacity: 1 !important; margin-bottom: 1.25rem; }
+        .cl-deck-card { position: relative; transform: none !important; opacity: 1 !important; margin-bottom: 1.25rem; top: auto; }
         .cl-deck-grid { grid-template-columns: 1fr; }
         .cl-deck-nav { display: none; }
     }
@@ -170,8 +226,8 @@
         order.forEach(function (ci, pos) {
             var card = cards[ci];
             card.style.transform = 'translateY(' + (-34 * pos) + 'px) scale(' + (1 - 0.035 * pos) + ')';
-            card.style.zIndex = String(40 - pos * 10);
-            card.style.opacity = pos === 0 ? '1' : String(Math.max(0.4, 0.8 - 0.18 * (pos - 1)));
+            card.style.zIndex = String(60 - pos * 10);
+            card.style.opacity = pos === 0 ? '1' : String(Math.max(0.28, 0.8 - 0.14 * (pos - 1)));
             card.classList.toggle('is-front', pos === 0);
         });
         dots.forEach(function (d, i) { d.classList.toggle('active', i === order[0]); });
@@ -179,7 +235,9 @@
     function bringFront(ci) {
         var p = order.indexOf(ci);
         if (p <= 0) return;
-        order.splice(p, 1); order.unshift(ci); layout();
+        order.splice(p, 1);
+        order.unshift(ci);
+        layout();
     }
     function next() { order.push(order.shift()); layout(); }
     function prev() { order.unshift(order.pop()); layout(); }

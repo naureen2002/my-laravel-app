@@ -127,8 +127,10 @@
     }
     .cl-chip i { color: var(--red-soft); }
 
-    /* Desktop — chips float across the hero with idle drift + JS parallax */
-    @media (min-width: 992px) {
+    /* Large screens — chips float only in the top/bottom corners, kept clear of the
+       vertically-centered title + subtitle. Below 1200px they fall back to the static
+       centered row (above), so they can never cover the content. */
+    @media (min-width: 1200px) {
         .cl-drift {
             position: absolute;
             inset: 0;
@@ -136,11 +138,11 @@
             pointer-events: none;
             z-index: 1;
         }
-        .cl-drift-chip { position: absolute; will-change: transform; }
-        .cl-drift-chip:nth-child(1) { top: 16%;  left: 5%; }
-        .cl-drift-chip:nth-child(2) { top: 26%;  right: 6%; }
-        .cl-drift-chip:nth-child(3) { bottom: 20%; left: 9%; }
-        .cl-drift-chip:nth-child(4) { bottom: 16%; right: 8%; }
+        .cl-drift-chip { position: absolute; will-change: transform; max-width: 28%; }
+        .cl-drift-chip:nth-child(1) { top: 10%;    left: 3%; }
+        .cl-drift-chip:nth-child(2) { top: 14%;    right: 3%; }
+        .cl-drift-chip:nth-child(3) { bottom: 12%; left: 3%; }
+        .cl-drift-chip:nth-child(4) { bottom: 10%; right: 3%; }
         .cl-drift-chip .cl-chip { animation: clDrift 7s ease-in-out infinite; }
         .cl-drift-chip:nth-child(2) .cl-chip { animation-delay: 1.2s; border-left-color: var(--red); }
         .cl-drift-chip:nth-child(3) .cl-chip { animation-delay: 2.4s; }
@@ -486,7 +488,7 @@
         var chips = [].slice.call(document.querySelectorAll('.cl-drift-chip'));
         if (hero2 && chips.length) {
             hero2.addEventListener('mousemove', function (e) {
-                if (window.innerWidth < 992) return;
+                if (window.innerWidth < 1200) return;
                 var r = hero2.getBoundingClientRect();
                 var tx = (e.clientX - r.left - r.width / 2) / r.width;
                 var ty = (e.clientY - r.top - r.height / 2) / r.height;

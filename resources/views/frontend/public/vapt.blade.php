@@ -23,7 +23,14 @@
 {{-- Section 6: Black / Grey / White box design. --}}
 @include('frontend.public.partials.vapt.boxes')
 
-@include('partials.reviews')
+{{-- Section 7: Benefits, matching the SOC benefit-grid pattern. --}}
+@include('frontend.public.partials.vapt.benefits')
+
+{{-- Section 8: System success story. --}}
+@include('frontend.public.partials.vapt.success')
+
+{{-- Section 9: Review section. --}}
+@include('frontend.public.partials.vapt.reviews')
 
 @include('partials.talk-to-expert', [
     'title' => 'Ready to test your defenses?',
