@@ -140,7 +140,7 @@
         }
         .cl-drift-chip { position: absolute; will-change: transform; max-width: 28%; }
         .cl-drift-chip:nth-child(1) { top: 10%;    left: 3%; }
-        .cl-drift-chip:nth-child(2) { top: 14%;    right: 3%; }
+        .cl-drift-chip:nth-child(2) { top: 14%;    right: -1%; }
         .cl-drift-chip:nth-child(3) { bottom: 12%; left: 3%; }
         .cl-drift-chip:nth-child(4) { bottom: 10%; right: 3%; }
         .cl-drift-chip .cl-chip { animation: clDrift 7s ease-in-out infinite; }
