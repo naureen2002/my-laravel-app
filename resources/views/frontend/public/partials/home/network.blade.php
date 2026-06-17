@@ -117,7 +117,7 @@
     .cl-net-chip.shown { opacity: 1; transition: opacity .6s var(--ease); }
     .cl-net-chip i { color: var(--red); }
     .cl-net-chip:nth-child(1) { top: 9%;  right: 6%; }
-    .cl-net-chip:nth-child(2) { top: 30%; left: 36%; animation-delay: 1.2s; }
+    .cl-net-chip:nth-child(2) { top: 40%; left: 30%; animation-delay: 1.2s; }
     .cl-net-chip:nth-child(3) { bottom: 9%; right: 16%; animation-delay: 2.2s; }
     @keyframes clNetFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 

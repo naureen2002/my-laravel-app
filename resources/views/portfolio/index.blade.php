@@ -23,6 +23,7 @@
             <span class="badge bg-light text-dark p-3">Security Audit & Training</span>
             <span class="badge bg-light text-dark p-3">vCISO</span>
         </div>
+        
 
         <p class="mt-5 fs-4">
             Join our Cyber Defense eco-system with
