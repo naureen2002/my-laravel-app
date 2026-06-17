@@ -116,11 +116,11 @@
         line-height: 1.42;
         font-weight: 600;
     }
-    .cl-dao-bubble-1 { top: 8%; right: 9%; }
-    .cl-dao-bubble-2 { bottom: 9%; left: 40%; animation-delay: 1.1s; }
-    .cl-dao-bubble-3 { top: 18%; left: 6%; animation-delay: 2.1s; }
-    .cl-dao-bubble-4 { bottom: 17%; right: 4%; animation-delay: 3s; }
-    .cl-dao-bubble-5 { top: 54%; left: 8%; animation-delay: 4.1s; }
+    .cl-dao-bubble-1 { top: 7%; right: 9%; }
+    .cl-dao-bubble-2 { bottom: 7%; left: 40%; animation-delay: 1.1s; }
+    .cl-dao-bubble-3 { top: 2%; left: 20%; animation-delay: 2.1s; }
+    .cl-dao-bubble-4 { bottom: 7%; right: 4%; animation-delay: 3s; }
+    .cl-dao-bubble-5 { top: 80%; left: 8%; animation-delay: 4.1s; }
     @keyframes clDaoBubbleFloat {
         0%, 100% { transform: translateY(0); opacity: .82; }
         50% { transform: translateY(-12px); opacity: 1; }
